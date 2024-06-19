@@ -12,7 +12,7 @@ const ProductList = () => {
 
   const fetchProducts = () => {
     axios
-      .get("/src/backend/index.php")
+      .get("http://localhost/api/ProductManager")
       .then((response) => {
         setProducts(response.data);
       })
@@ -26,7 +26,7 @@ const ProductList = () => {
     const productIds = selectedProducts.map((product) => product.id);
 
     axios
-      .delete("/src/backend/index.php", { data: { productIds } })
+      .delete("http://localhost/api/ProductManager", { data: { productIds } })
       .then(() => {
         fetchProducts();
       })

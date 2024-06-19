@@ -51,7 +51,7 @@ const ProductList = () => {
       <h1>Product List</h1>
       <button
         className="btn btn-primary mb-3"
-        onClick={() => navigate("/add-product")} // Use navigate function
+        onClick={() => navigate("/add-product")}
       >
         ADD
       </button>

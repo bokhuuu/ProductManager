@@ -1,7 +1,7 @@
 <?php
 
 require_once 'db_connection.php';
-require_once 'Product.php';
+require_once 'models/Product.php';
 
 class DatabaseOperations {
     private $db;

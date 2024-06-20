@@ -18,13 +18,19 @@ const AddProduct = () => {
   });
 
   const handleChange = (e) => {
-    setProduct({ ...product, [e.target.id]: e.target.value });
+    const { id, value } = e.target;
+
+    if (id === "productType") {
+      setProduct({ ...product, type: value });
+    } else {
+      setProduct({ ...product, [id]: value });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/src/backend/index.php", product)
+      .post("http://localhost/api/ProductManager", product)
       .then(() => navigate("/"))
       .catch((error) => console.error("Error adding product:", error));
   };

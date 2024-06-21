@@ -50,46 +50,38 @@ const ProductList = () => {
 
   return (
     <div className="container">
-      <h1>Product List</h1>
-      <button
-        className="btn btn-primary mb-3"
-        onClick={() => navigate("/add-product")}
-      >
-        ADD
-      </button>
-      <button className="btn btn-danger mb-3 ml-3" onClick={handleMassDelete}>
-        MASS DELETE
-      </button>
-
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Select</th>
-            <th>SKU</th>
-            <th>Name</th>
-            <th>Price ($)</th>
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td>
+      <h1 className="my-4">Product List</h1>
+      <div className="row">
+        {products.map((product) => (
+          <div key={product.id} className="col-lg-4 col-md-6 mb-4">
+            <div className={`card ${product.selected ? "border-primary" : ""}`}>
+              <div className="card-body">
                 <input
                   type="checkbox"
                   className="delete-checkbox"
                   checked={product.selected || false}
                   onChange={() => handleCheckboxChange(product.id)}
                 />
-              </td>
-              <td>{product.sku}</td>
-              <td>{product.name}</td>
-              <td>{product.price}</td>
-              <td>{renderProductDetails(product)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                <h5 className="card-title mt-2">{product.name}</h5>
+                <p className="card-text">SKU: {product.sku}</p>
+                <p className="card-text">Price: ${product.price}</p>
+                <p className="card-text">{renderProductDetails(product)}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-4">
+        <button
+          className="btn btn-primary mr-2"
+          onClick={() => navigate("/add-product")}
+        >
+          ADD
+        </button>
+        <button className="btn btn-danger" onClick={handleMassDelete}>
+          MASS DELETE
+        </button>
+      </div>
     </div>
   );
 };
